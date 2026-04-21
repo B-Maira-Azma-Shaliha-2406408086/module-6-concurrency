@@ -14,4 +14,5 @@ I learned how to validate requests and selectively respond to the user based on 
 ## Commit 4 Reflection Notes
 I learnt the flaw of single-threaded server. I simulated a slow response by adding a /sleep route that triggers thread sleeps for555 10 seconds. I saw firsthand how a single-threaded server works. When I accessed 127.0.0.1:7878/sleep in one tab and immediately tried to open 127.0.0.1:7878 in another, the second tab was completely blocked and had to wait for the first one to finish. This happens because the server can only handle one request at a time and cannot process the new connection until the first one is done.
 
-
+## Commit 5 Reflection Notes
+Building a ThreadPool was the most challenging part for me because I had to set up a real communication system using Message Passing and Channels. It acts like a "delivery hallway" where the main thread hands off jobs to workers that are already standing by. The "aha!" moment was seeing that even when the /sleep tab was loading, other tabs opened instantly because the server wasn't blocked anymore. It’s cool to see how the workers handle requests efficiently without making the user wait.
