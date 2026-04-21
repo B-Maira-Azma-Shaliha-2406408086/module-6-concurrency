@@ -10,3 +10,8 @@ This commit focuses on giving a response to the user when a thread completes its
 ## Commit 3 Reflection Notes
 ![alt text](commit3.png)
 I learned how to validate requests and selectively respond to the user based on the URL they access. Previously, the server would return the same page regardless of the request. Now, I have implemented a check for the "Request Line" to see if it matches GET / HTTP/1.1. Instead of having multiple blocks of code reading files and writing to the stream, I used an if/else block to determine the status_line and the filename. NOw, if the user requests an invalid path, the server now correctly returns a 404 NOT FOUND status and displays 404.html.
+
+## Commit 4 Reflection Notes
+I learnt the flaw of single-threaded server. I simulated a slow response by adding a /sleep route that triggers thread sleeps for555 10 seconds. I saw firsthand how a single-threaded server works. When I accessed 127.0.0.1:7878/sleep in one tab and immediately tried to open 127.0.0.1:7878 in another, the second tab was completely blocked and had to wait for the first one to finish. This happens because the server can only handle one request at a time and cannot process the new connection until the first one is done.
+
+
